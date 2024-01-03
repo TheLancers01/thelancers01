@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<h2>Create A New Workout</h2>
+
+<form action="/save-workout" method="post">
+
+    <label for="workoutType">Select Workout Type:</label>
+    <select id="workoutType" name="workoutType">
+        <option value="strength">Strength Training</option>
+        <option value="cardio">Cardio</option>
+        <option value="flexibility">Flexibility</option>
+        <!-- Add more workout types as needed -->
+    </select>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Day</th>
+            <th>Exercise</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="day : ${daysOfWeek}">
+            <td th:text="${day}"></td>
+            <td>
+                <select th:id="'exercise-' + ${day}" th:name="'exercises[' + ${day} + ']'" multiple="multiple">
+                    <option value="push-ups">Push-ups</option>
+                    <option value="squats">Squats</option>
+                    <option value="running">Running</option>
+                    <!-- Add more exercises as needed -->
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <label for="description">Workout Description:</label>
+    <textarea id="description" name="description" rows="4" cols="50"></textarea>
+
+    <br>
+
+    <input type="submit" value="Save Workout">
+
+</form>
+
+</body>
+</html>

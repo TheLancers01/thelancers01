@@ -13,7 +13,7 @@ import java.util.List;
 import thelancers01.project.models.Exercise;
 import thelancers01.project.models.data.ExerciseRepository;
 
-//TODO:  Test for persistence
+
     @Controller
     @RequestMapping("create")
     public class CreateExerciseController {

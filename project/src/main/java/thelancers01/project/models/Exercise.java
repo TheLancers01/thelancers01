@@ -12,8 +12,8 @@ public class Exercise {
     @Id
     @GeneratedValue
     private int id;
-    public static String name;
-    private static int nextId = 1;
+    public String name;
+    private int nextId = 1;
     private String exerciseName;
     private String exerciseType;
     private String targetMuscles;
