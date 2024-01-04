@@ -12,7 +12,7 @@ public class Exercise {
     @Id
     @GeneratedValue
     private int id;
-    public String name;
+    //public String name;
     private int nextId = 1;
     private String exerciseName;
     private String exerciseType;

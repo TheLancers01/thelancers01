@@ -15,7 +15,7 @@ import thelancers01.project.models.data.ExerciseRepository;
 
 
     @Controller
-    @RequestMapping("create")
+    @RequestMapping("exercise")
     public class CreateExerciseController {
 
         public static List<Exercise> exercises = new ArrayList<>();
@@ -23,7 +23,7 @@ import thelancers01.project.models.data.ExerciseRepository;
     @Autowired
     private ExerciseRepository exerciseRepository;
 
-        @GetMapping("exercise")
+        @GetMapping("create")
         public String ViewCreateAnExercise(Model model) {
 
             model.addAttribute(new Exercise());
@@ -31,17 +31,11 @@ import thelancers01.project.models.data.ExerciseRepository;
         }
 
 
-        @PostMapping("exercise")
-        public String submitForm(@ModelAttribute @Valid Exercise newExercise,
-//                @RequestParam String exerciseName,
-//                @RequestParam String exerciseType,
-//                @RequestParam String targetMuscles,
-//                @RequestParam String exerciseNotes,
-                Model model) {
+        @PostMapping("create")
+        public String submitForm(@ModelAttribute @Valid Exercise newExercise, Model model) {
 
             exerciseRepository.save(newExercise);
 
-//            exercises.add(new Exercise(exerciseName, exerciseType, targetMuscles, exerciseNotes));
             return "redirect:/userExercises";
         }
 

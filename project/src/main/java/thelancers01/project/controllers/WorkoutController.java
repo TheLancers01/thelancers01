@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 import thelancers01.project.models.Exercise;
@@ -16,7 +17,8 @@ import thelancers01.project.models.data.ExerciseRepository;
 import thelancers01.project.models.data.WorkoutRepository;
 
 @Controller
-public class CreateWorkoutControllerNoApi {
+@RequestMapping("workouts")
+public class WorkoutController {
 
 
 
@@ -25,30 +27,43 @@ public class CreateWorkoutControllerNoApi {
         @Autowired
         private ExerciseRepository exerciseRepository;
 
-    @Autowired
-    private WorkoutRepository workoutRepository;
-    @RequestMapping("workouts")
-    public String viewAllWorkouts(Model model){
+        @Autowired
+        private WorkoutRepository workoutRepository;
+        @RequestMapping("index")
+         public String viewAllWorkouts(Model model){
 
         model.addAttribute("workouts", workoutRepository.findAll());
-        return "workouts";
+        return "workouts/index";
     }
 
-        @GetMapping("create/workout")
+        @GetMapping("create")
         public String ViewCreateAnExercise(Model model) {
 
             model.addAttribute(new Workout());
-            return "create/workout";
+            return "workouts/create";
         }
 
 
-        @PostMapping("create/workout")
+        @PostMapping("create")
         public String submitForm(@ModelAttribute @Valid Workout newWorkout, Model model) {
 
             workoutRepository.save(newWorkout);
 
 
-            return "redirect:/workouts";
+            return "redirect:/workouts/index";
+        }
+
+        @GetMapping("view/{workoutId}")
+    public String displayViewWorkout(Model model, @PathVariable int workoutId){
+
+            Optional<Workout> optionalWorkout = workoutRepository.findById(workoutId);
+            if (optionalWorkout.isPresent()){
+                Workout workout = (Workout) optionalWorkout.get();
+                model.addAttribute("workout", workout);
+                return "workouts/view";
+            }else {
+                return "redirect:../";
+            }
         }
 
 

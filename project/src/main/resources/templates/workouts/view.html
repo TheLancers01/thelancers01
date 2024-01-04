@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="fragments :: head">
     <meta charset="UTF-8">
     <title>Your Workouts</title>
 </head>
-<body>
+<body class="container  body-content">
+<h1 th:text="${workout.getName}">No Title</h1>
 
-<h2> Workout Plan</h2>
-
-<div>
-    <p th:unless="${workouts} and ${workouts.size()}">You have no saved workouts.</p>
-<div>
-    <h2>Workouts</h2>
-    <ul>
-        <li th:each="workout : ${workouts}">
-            <a th:href="@{'/"
-        </li>
-    </ul>
-</div>
-</div>
+    <div>
+        <p th:text="${'Description: ' + workout.getWorkoutDescription}"></p>
+        <p th:text="${'Details:  ' + workout.getWorkoutDetails}"></p>
+    </div>
 </body>
 </html>

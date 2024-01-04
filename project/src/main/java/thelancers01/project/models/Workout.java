@@ -14,20 +14,23 @@ public class Workout {
     @Id
     @GeneratedValue
     private int id;
-    public static String name;
+    public String name;
     private static int nextId = 1;
-    private String workoutName;
-    private String workoutType;
-    private String targetMuscles;
+ //   private String workoutName;
+//    private String workoutType;
+//    private String targetMuscles;
+    private String workoutDetails;
     private String workoutDescription;
     //private List<Exercise> exerciseList = new ArrayList<>();
 
 
-    public Workout(int id, String workoutName, String workoutType, String targetMuscles, String workoutDescription, List exerciseList) {
+    public Workout(int id, String name, String workoutDetails, String workoutType, String targetMuscles, String workoutDescription, List exerciseList) {
         this.id = id;
-        this.workoutName = workoutName;
-        this.workoutType = workoutType;
-        this.targetMuscles = targetMuscles;
+        this.name = name;
+       // this.workoutName = workoutName;
+        this.workoutDetails = workoutDetails;
+//        this.workoutType = workoutType;
+//        this.targetMuscles = targetMuscles;
         this.workoutDescription = workoutDescription;
        // this.exerciseList = exerciseList;
     }
@@ -38,28 +41,28 @@ public class Workout {
     }
 
     public String getName() {
-        return workoutName;
+        return name;
     }
 
-    public void setName(String workoutName) {
-        this.workoutName = workoutName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getWorkoutType() {
-        return workoutType;
-    }
-
-    public void setWorkoutType(String workoutType) {
-        this.workoutType = workoutType;
-    }
-
-    public String getTargetMuscles() {
-        return targetMuscles;
-    }
-
-    public void setTargetMuscles(String targetMuscles) {
-        this.targetMuscles = targetMuscles;
-    }
+//    public String getWorkoutType() {
+//        return workoutType;
+//    }
+//
+//    public void setWorkoutType(String workoutType) {
+//        this.workoutType = workoutType;
+//    }
+//
+//    public String getTargetMuscles() {
+//        return targetMuscles;
+//    }
+//
+//    public void setTargetMuscles(String targetMuscles) {
+//        this.targetMuscles = targetMuscles;
+//    }
 
     public String getWorkoutDescription() {
         return workoutDescription;
@@ -76,6 +79,15 @@ public class Workout {
 //    public void setExerciseList(List<Exercise> exerciseList) {
 //        this.exerciseList = exerciseList;
 //    }
+
+
+    public String getWorkoutDetails() {
+        return workoutDetails;
+    }
+
+    public void setWorkoutDetails(String workoutDetails) {
+        this.workoutDetails = workoutDetails;
+    }
 
     @Override
     public int hashCode() {
