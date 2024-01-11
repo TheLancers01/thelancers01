@@ -5,9 +5,17 @@
     <title>Personal Records</title>
 </head>
 <body>
-<h1>Your Personal Records</h1>
-
-<table>
+<div class="top-bar">
+    <h1 class="title">Lancer's Fitness</h1>
+    <div class="account-actions">
+        <a th:href="@{/userExercises}" class="btn btn-info">User Exercises</a>
+        <a th:href="@{/dashboard}" class="btn btn-info">Dashboard</a>
+        <a th:href="@{/account}" class="btn btn-info">Manage Account</a>
+        <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+<h1 class="main-title-records">Your Personal Records</h1>
+<table class="records-table">
     <tr>
         <th>Record</th>
         <th>Current</th>
@@ -18,8 +26,8 @@
         <td th:text="${currentRecord.mileTime}"></td>
         <td>
             <form th:action="@{/update-mile-time}" method="post">
-                <input type="text" name="newMileTime" placeholder="Enter New Time">
-                <button type="submit">Update</button>
+                <input type="number" name="newMileTime" placeholder="Enter New Time" class="input-field">
+                <button type="submit" class="btn btn-submit">Update</button>
             </form>
         </td>
     </tr>
@@ -28,8 +36,8 @@
         <td th:text="${currentRecord.benchPress}"></td>
         <td>
             <form th:action="@{/update-bench-press}" method="post">
-                <input type="number" name="newBenchPress" placeholder="Enter New Weight">
-                <button type="submit">Update</button>
+                <input type="number" name="newBenchPress" placeholder="Enter New Weight" class="input-field">
+                <button type="submit" class="btn btn-submit">Update</button>
             </form>
         </td>
     </tr>
@@ -38,8 +46,8 @@
         <td th:text="${currentRecord.squat}"></td>
         <td>
             <form th:action="@{/update-squat}" method="post">
-                <input type="number" name="newSquat" placeholder="Enter New Weight">
-                <button type="submit">Update</button>
+                <input type="number" name="newSquat" placeholder="Enter New Weight" class="input-field">
+                <button type="submit" class="btn btn-submit">Update</button>
             </form>
         </td>
     </tr>
@@ -48,8 +56,8 @@
         <td th:text="${currentRecord.maxPushUps}"></td>
         <td>
             <form th:action="@{/update-max-push-ups}" method="post">
-                <input type="number" name="newMaxPushUps" placeholder="Enter New Number">
-                <button type="submit">Update</button>
+                <input type="number" name="newMaxPushUps" placeholder="Enter New Number" class="input-field">
+                <button type="submit" class="btn btn-submit">Update</button>
             </form>
         </td>
     </tr>
@@ -58,8 +66,8 @@
         <td th:text="${currentRecord.maxSitUps}"></td>
         <td>
             <form th:action="@{/update-max-sit-ups}" method="post">
-                <input type="number" name="newMaxSitUps" placeholder="Enter New Number">
-                <button type="submit">Update</button>
+                <input type="number" name="newMaxSitUps" placeholder="Enter New Number" class="input-field">
+                <button type="submit" class="btn btn-submit">Update</button>
             </form>
         </td>
     </tr>
@@ -68,8 +76,8 @@
         <td th:text="${currentRecord.caloriesBurned}"></td>
         <td>
             <form th:action="@{/update-calories-burned}" method="post">
-                <input type="number" name="newCaloriesBurned" placeholder="Enter New Amount">
-                <button type="submit">Update</button>
+                <input type="number" name="newCaloriesBurned" placeholder="Enter New Amount" class="input-field">
+                <button type="submit" class="btn btn-submit">Update</button>
             </form>
         </td>
     </tr>

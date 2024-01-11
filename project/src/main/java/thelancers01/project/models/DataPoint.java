@@ -13,7 +13,7 @@ public class DataPoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String mileTime;
+    private double mileTime;
     private int benchPress;
     private int squat;
     private int maxPushUps;
@@ -24,7 +24,7 @@ public class DataPoint {
 
     public DataPoint() {}
 
-    public DataPoint(String mileTime, int benchPress, int squat, int maxPushUps, int maxSitUps, int caloriesBurned) {
+    public DataPoint(double mileTime, int benchPress, int squat, int maxPushUps, int maxSitUps, int caloriesBurned) {
         this.mileTime = mileTime;
         this.benchPress = benchPress;
         this.squat = squat;
@@ -43,11 +43,11 @@ public class DataPoint {
         this.id = id;
     }
 
-    public String getMileTime() {
+    public double getMileTime() {
         return mileTime;
     }
 
-    public void setMileTime(String mileTime) {
+    public void setMileTime(int mileTime) {
         this.mileTime = mileTime;
     }
 

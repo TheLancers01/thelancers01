@@ -28,7 +28,7 @@ public class RecordsController {
     }
 
     @PostMapping("/update-mile-time")
-    public String updateMileTime(@RequestParam String newMileTime, Model model) {
+    public String updateMileTime(@RequestParam double newMileTime, Model model) {
         return "redirect:/records/view";
     }
 
