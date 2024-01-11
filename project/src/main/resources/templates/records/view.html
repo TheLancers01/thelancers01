@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head}">
+    <meta charset="UTF-8"/>
+    <title>Personal Records</title>
+</head>
+<body>
+<h1>Your Personal Records</h1>
+
+<table>
+    <tr>
+        <th>Record</th>
+        <th>Current</th>
+        <th>Update</th>
+    </tr>
+    <tr>
+        <td>Mile Time (min:sec)</td>
+        <td th:text="${currentRecord.mileTime}"></td>
+        <td>
+            <form th:action="@{/update-mile-time}" method="post">
+                <input type="text" name="newMileTime" placeholder="Enter New Time">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>Bench Press (lbs)</td>
+        <td th:text="${currentRecord.benchPress}"></td>
+        <td>
+            <form th:action="@{/update-bench-press}" method="post">
+                <input type="number" name="newBenchPress" placeholder="Enter New Weight">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>Squat (lbs)</td>
+        <td th:text="${currentRecord.squat}"></td>
+        <td>
+            <form th:action="@{/update-squat}" method="post">
+                <input type="number" name="newSquat" placeholder="Enter New Weight">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>Max Push-Ups</td>
+        <td th:text="${currentRecord.maxPushUps}"></td>
+        <td>
+            <form th:action="@{/update-max-push-ups}" method="post">
+                <input type="number" name="newMaxPushUps" placeholder="Enter New Number">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>Max Sit-Ups</td>
+        <td th:text="${currentRecord.maxSitUps}"></td>
+        <td>
+            <form th:action="@{/update-max-sit-ups}" method="post">
+                <input type="number" name="newMaxSitUps" placeholder="Enter New Number">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>Most Calories Burned (cal)</td>
+        <td th:text="${currentRecord.caloriesBurned}"></td>
+        <td>
+            <form th:action="@{/update-calories-burned}" method="post">
+                <input type="number" name="newCaloriesBurned" placeholder="Enter New Amount">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<div class="footer" th:replace="~{fragments :: footer}"></div>
+</body>
+</html>
+
