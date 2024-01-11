@@ -3,6 +3,7 @@ package thelancers01.project.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +51,8 @@ public class AuthenticationController {
         model.addAttribute("title", "Register");
         return "register";
     }
+
+    @Transactional
     @PostMapping("/register")
     public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO, Errors errors, HttpServletRequest request, Model model) {
         if (errors.hasErrors()) {
@@ -72,7 +75,6 @@ public class AuthenticationController {
             model.addAttribute("title", "register");
             return "register";
         }
-
         User newUser = new User(registerFormDTO.getUserName(), registerFormDTO.getPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
