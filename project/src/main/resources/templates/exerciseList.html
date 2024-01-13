@@ -81,9 +81,9 @@
     <a th:href="@{/exercise/create}" class="btn btn-primary btn-small">Can't find your exercise? Create one here!</a>
 </div>
 
-<div class="footer" th:replace="fragments :: footer"></div>
+<div class="footer" th:replace="~{fragments :: footer}"></div>
 
-<!-- Add a script to handle adding exercises to the workout -->
+
 <script th:inline="javascript">
     function addToWorkout(exerciseId) {
         alert('Exercise added to workout: ' + exerciseId);

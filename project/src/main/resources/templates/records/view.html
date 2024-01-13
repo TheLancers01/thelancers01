@@ -15,73 +15,49 @@
     </div>
 </div>
 <h1 class="main-title-records">Your Personal Records</h1>
-<table class="records-table">
-    <tr>
-        <th>Record</th>
-        <th>Current</th>
-        <th>Update</th>
-    </tr>
-    <tr>
-        <td>Mile Time (min:sec)</td>
-        <td th:text="${currentRecord.mileTime}"></td>
-        <td>
-            <form th:action="@{/update-mile-time}" method="post">
-                <input type="number" name="newMileTime" placeholder="Enter New Time" class="input-field">
-                <button type="submit" class="btn btn-submit">Update</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>Bench Press (lbs)</td>
-        <td th:text="${currentRecord.benchPress}"></td>
-        <td>
-            <form th:action="@{/update-bench-press}" method="post">
-                <input type="number" name="newBenchPress" placeholder="Enter New Weight" class="input-field">
-                <button type="submit" class="btn btn-submit">Update</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>Squat (lbs)</td>
-        <td th:text="${currentRecord.squat}"></td>
-        <td>
-            <form th:action="@{/update-squat}" method="post">
-                <input type="number" name="newSquat" placeholder="Enter New Weight" class="input-field">
-                <button type="submit" class="btn btn-submit">Update</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>Max Push-Ups</td>
-        <td th:text="${currentRecord.maxPushUps}"></td>
-        <td>
-            <form th:action="@{/update-max-push-ups}" method="post">
-                <input type="number" name="newMaxPushUps" placeholder="Enter New Number" class="input-field">
-                <button type="submit" class="btn btn-submit">Update</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>Max Sit-Ups</td>
-        <td th:text="${currentRecord.maxSitUps}"></td>
-        <td>
-            <form th:action="@{/update-max-sit-ups}" method="post">
-                <input type="number" name="newMaxSitUps" placeholder="Enter New Number" class="input-field">
-                <button type="submit" class="btn btn-submit">Update</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>Most Calories Burned (cal)</td>
-        <td th:text="${currentRecord.caloriesBurned}"></td>
-        <td>
-            <form th:action="@{/update-calories-burned}" method="post">
-                <input type="number" name="newCaloriesBurned" placeholder="Enter New Amount" class="input-field">
-                <button type="submit" class="btn btn-submit">Update</button>
-            </form>
-        </td>
-    </tr>
-</table>
+
+<!-- Single Form for Updating or Creating a Record -->
+<form th:action="@{/records/save}" th:object="${currentRecord}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <table class="records-table">
+        <tr>
+            <th>Record</th>
+            <th>Current</th>
+            <th>Update</th>
+        </tr>
+        <tr>
+            <td>Mile Time (min:sec)</td>
+            <td th:text="*{mileTime}"></td>
+            <td><input type="number" th:field="*{mileTime}" step="0.01" placeholder="Enter New Time" class="input-field" th:value="${currentRecord.mileTime != null ? currentRecord.mileTime : ''}"></td>
+        </tr>
+        <tr>
+            <td>Bench Press (lbs)</td>
+            <td th:text="*{benchPress}"></td>
+            <td><input type="number" th:field="*{benchPress}" placeholder="Enter New Weight" class="input-field" th:value="${currentRecord.benchPress != null ? currentRecord.benchPress : 0}"></td>
+        </tr>
+        <tr>
+            <td>Squat (lbs)</td>
+            <td th:text="*{squat}"></td>
+            <td><input type="number" th:field="*{squat}" placeholder="Enter New Weight" class="input-field" th:value="${currentRecord.squat != null ? currentRecord.squat : 0}"></td>
+        </tr>
+        <tr>
+            <td>Max Push-Ups</td>
+            <td th:text="*{maxPushUps}"></td>
+            <td><input type="number" th:field="*{maxPushUps}" placeholder="Enter New Number" class="input-field" th:value="${currentRecord.maxPushUps != null ? currentRecord.maxPushUps : 0}"></td>
+        </tr>
+        <tr>
+            <td>Max Sit-Ups</td>
+            <td th:text="*{maxSitUps}"></td>
+            <td><input type="number" th:field="*{maxSitUps}" placeholder="Enter New Number" class="input-field" th:value="${currentRecord.maxSitUps != null ? currentRecord.maxSitUps : 0}"></td>
+        </tr>
+        <tr>
+            <td>Calories Burned (cal)</td>
+            <td th:text="*{caloriesBurned}"></td>
+            <td><input type="number" th:field="*{caloriesBurned}" placeholder="Enter New Amount" class="input-field" th:value="${currentRecord.caloriesBurned != null ? currentRecord.caloriesBurned : 0}"></td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-submit">Save</button>
+</form>
 
 <div class="footer" th:replace="~{fragments :: footer}"></div>
 </body>

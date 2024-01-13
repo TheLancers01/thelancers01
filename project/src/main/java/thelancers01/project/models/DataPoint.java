@@ -1,9 +1,6 @@
 package thelancers01.project.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -21,8 +18,9 @@ public class DataPoint {
     private int caloriesBurned;
 
 
-
-    public DataPoint() {}
+   @ManyToOne
+   private User user;
+   public DataPoint() {}
 
     public DataPoint(double mileTime, int benchPress, int squat, int maxPushUps, int maxSitUps, int caloriesBurned) {
         this.mileTime = mileTime;
@@ -33,8 +31,6 @@ public class DataPoint {
         this.caloriesBurned = caloriesBurned;
     }
 
-
-
     public Integer getId() {
         return id;
     }
@@ -43,11 +39,9 @@ public class DataPoint {
         this.id = id;
     }
 
-    public double getMileTime() {
-        return mileTime;
-    }
+    public double getMileTime() {return mileTime;}
 
-    public void setMileTime(int mileTime) {
+    public void setMileTime(double mileTime) {
         this.mileTime = mileTime;
     }
 
@@ -91,7 +85,21 @@ public class DataPoint {
         this.caloriesBurned = caloriesBurned;
     }
 
+    public void updateFields(DataPoint newData) {
+        this.mileTime = newData.getMileTime();
+        this.benchPress = newData.getBenchPress();
+        this.squat = newData.getSquat();
+        this.maxPushUps = newData.getMaxPushUps();
+        this.maxSitUps = newData.getMaxSitUps();
+        this.caloriesBurned = newData.getCaloriesBurned();
+    }
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
 
 
