@@ -5,14 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import thelancers01.project.models.Exercise;
+import thelancers01.project.models.data.ExerciseRepository;
+import thelancers01.project.service.DeleteExerciseService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-
-import thelancers01.project.models.Exercise;
-import thelancers01.project.models.data.ExerciseRepository;
 
 
 @Controller
@@ -58,5 +57,32 @@ public class CreateExerciseController {
             return "redirect:../";
         }
     }
+
+    @GetMapping("delete")
+    public String deleteExerciseForm(Model model){
+        model.addAttribute("exercises", exerciseRepository.findAll());
+        return "exercise/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteExercise(
+            @RequestParam(required = false) int[] exerciseIds,
+            Model model) {
+
+        DeleteExerciseService deleteExerciseService = new DeleteExerciseService();
+
+        for (int id : exerciseIds) {
+            try {
+                deleteExerciseService.deleteExercise(id);
+                return "redirect:/userExercises";
+            } catch (IllegalStateException e) {
+
+                model.addAttribute("errorMessage", e.getMessage());
+            }
+        }
+
+        return "exercise/delete";
+    }
+
 
 }

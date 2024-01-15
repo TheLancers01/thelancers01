@@ -10,8 +10,6 @@ import thelancers01.project.models.Record;
 import thelancers01.project.models.data.DataPointRepository;
 import thelancers01.project.models.data.RecordRepository;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
