@@ -1,40 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head}">
     <meta charset="UTF-8"/>
-    <title></title>
+    <title>Personal Records</title>
 </head>
 <body>
-<div th:replace="~{fragments :: top-bar}" class="top-bar">
+<div class="top-bar">
+    <h1 class="title">Lancer's Fitness</h1>
+    <div class="account-actions">
+        <a th:href="@{/userExercises}" class="btn btn-info">User Exercises</a>
+        <a th:href="@{/dashboard}" class="btn btn-info">Dashboard</a>
+        <a th:href="@{/account}" class="btn btn-info">Manage Account</a>
+        <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+    </div>
 </div>
-<div th:replace="~{fragments :: mini-guide}"></div>
+<h1 class="main-title-records">Your Personal Records</h1>
 
-
-<h1 th:text="${record.name}">No Title</h1>
-
-<div>
-    <table class="table">
-        <thead>
+<form th:action="@{/records/save}" th:object="${currentRecord}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <table class="records-table">
         <tr>
-<!--            <th>Data Point Id</th>-->
-            <th>Value</th>
-            <th>Date</th>
+            <th>Record</th>
+            <th>Current</th>
+            <th>Update</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr th:each="dataPoint : ${record.getDataPointsList()}">
-<!--            <td th:text="${dataPoint.id}"></td>-->
-            <td th:text="${dataPoint.value}"></td>
-            <td th:text="${dataPoint.date}"></td>
-
+        <tr>
+            <td>Mile Time (min:sec)</td>
+            <td th:text="*{mileTime}"></td>
+            <td><input type="number" th:field="*{mileTime}" step="0.01" placeholder="Enter New Time" class="input-field" th:value="${currentRecord.mileTime != null ? currentRecord.mileTime : ''}"></td>
         </tr>
-        </tbody>
+        <tr>
+            <td>Bench Press (lbs)</td>
+            <td th:text="*{benchPress}"></td>
+            <td><input type="number" th:field="*{benchPress}" placeholder="Enter New Weight" class="input-field" th:value="${currentRecord.benchPress != null ? currentRecord.benchPress : 0}"></td>
+        </tr>
+        <tr>
+            <td>Squat (lbs)</td>
+            <td th:text="*{squat}"></td>
+            <td><input type="number" th:field="*{squat}" placeholder="Enter New Weight" class="input-field" th:value="${currentRecord.squat != null ? currentRecord.squat : 0}"></td>
+        </tr>
+        <tr>
+            <td>Max Push-Ups</td>
+            <td th:text="*{maxPushUps}"></td>
+            <td><input type="number" th:field="*{maxPushUps}" placeholder="Enter New Number" class="input-field" th:value="${currentRecord.maxPushUps != null ? currentRecord.maxPushUps : 0}"></td>
+        </tr>
+        <tr>
+            <td>Max Sit-Ups</td>
+            <td th:text="*{maxSitUps}"></td>
+            <td><input type="number" th:field="*{maxSitUps}" placeholder="Enter New Number" class="input-field" th:value="${currentRecord.maxSitUps != null ? currentRecord.maxSitUps : 0}"></td>
+        </tr>
+        <tr>
+            <td>Calories Burned (cal)</td>
+            <td th:text="*{caloriesBurned}"></td>
+            <td><input type="number" th:field="*{caloriesBurned}" placeholder="Enter New Amount" class="input-field" th:value="${currentRecord.caloriesBurned != null ? currentRecord.caloriesBurned : 0}"></td>
+        </tr>
     </table>
-</div>
+    <button type="submit" class="btn btn-submit" style="margin-bottom:375px;">Save</button>
+</form>
 
-
-<a th:href="@{'/records/createDataPoint/' + ${record.id}}">Add Data Point</a>
-<a th:href="@{'/records/index'}">Back to All Metrics</a>
-<div  class="footer" th:replace="fragments :: footer"></div>
+<div class="footer" th:replace="~{fragments :: footer}"></div>
 </body>
 </html>
+

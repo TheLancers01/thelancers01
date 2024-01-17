@@ -6,16 +6,16 @@
 </head>
 <body>
 
-    <div th:replace="~{fragments :: top-bar}"></div>
+<div th:replace="~{fragments :: top-bar}"></div>
 
-    <div th:replace="~{fragments :: mini-guide}"></div>
+<div th:replace="~{fragments :: mini-guide}"></div>
 </div>
 <p th:unless="${exercises} and ${exercises.size()}">No exercises found!</p>
 
 
 <section class="All-User-Exercises-Header">
     <h1 th:if="${exercises} and ${exercises.size()}">All User Exercises</h1>
-    <p class="User-Exercises-Detail">Add your exercises to your workout plan or delete ones you are no longer interested in.</p>
+    <!--    <p class="User-Exercises-Detail">Add your exercises to your workout plan or delete ones you are no longer interested in.</p>-->
 </section>
 
 <form th:action="@{/update-workout}" method="post">
@@ -24,11 +24,11 @@
             <div class="exercise-details">
                 <ul class="no-bullets">
                     <li class="BigNBold">
-                <a th:href="@{'/exercise/view/' + ${exercise.id}}" class="exercise-entry" th:text="${exercise.getName}"></a>
+                        <a th:href="@{'/exercise/view/' + ${exercise.id}}" class="exercise-entry" th:text="${exercise.getName}"></a>
                     </li>
                 </ul>
                 <br>
-<!--                <strong>Name:</strong> <span th:href="@{'/exercise/view' + ${exercise.id}}" th:text="${exercise.getName}"></span><br>-->
+                <!--                <strong>Name:</strong> <span th:href="@{'/exercise/view' + ${exercise.id}}" th:text="${exercise.getName}"></span><br>-->
                 <strong>Type:</strong> <span th:text="${exercise.getExerciseType}"></span><br>
                 <strong>Target Muscles:</strong> <span th:text="${exercise.getTargetMuscles}"></span><br>
                 <strong>Notes:</strong> <span th:text="${exercise.getExerciseNotes}"></span>
@@ -38,11 +38,11 @@
         <hr>
     </div>
 
-    <section class="Exercise-Buttons">
-        <button type="submit" name="action" value="add" class="btn btn-submit">Add Selected to Workout</button>
-        <button type="submit" name="action" value="delete" class="btn btn-danger">Delete Selected</button>
-        <a th:href="@{/exercise/delete}" class="btn btn-danger">Delete Saved Exercises</a>
-    </section>
+    <!--    <section class="Exercise-Buttons">-->
+    <!--        <button type="submit" name="action" value="add" class="btn btn-submit">Add Selected to Workout</button>-->
+    <!--        <button type="submit" name="action" value="delete" class="btn btn-danger">Delete Selected</button>-->
+    <!--        <a th:href="@{/exercise/delete}" class="btn btn-danger">Delete Saved Exercises</a>-->
+    <!--    </section>-->
 </form>
 
 <div class="create-exercise-button">

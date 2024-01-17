@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8"/>
+    <title>Lancer's Fitness</title>
+</head>
+<body>
+
+<div th:replace="~{fragments :: top-bar}" class="top-bar">
+</div>
+<div th:replace="~{fragments :: mini-guide}"></div>
+<h2 class="create">Save Searched Exercises </h2>
+<div>
+    <img src="/images/Ad.jpeg" alt="Advertisement Image" class="ad">
+</div>
+
+<div>
+    <div class="exercises">
+        <form class="createWorkout" action="/exercise/createApiExercise" th:object="${exercise}" method="post">
+
+            <div class="exercises">
+                <label class="BigNBold" th:for="exercises">Exercise: </label>
+
+                <th:block th:each="selectedExercise, iterStat : ${selectedExercises}">
+                    <label th:text="'Name: ' + ${selectedExercise.name}" th:if="${iterStat.index == 0}"></label>
+                    <input type="hidden" name="name" th:value="${selectedExercise.name}" th:if="${iterStat.index == 0}" required><br>
+
+
+                    <label th:text="'Type: ' + ${selectedExercise.type}" th:if="${iterStat.index == 0}"></label>
+                    <input type="hidden" name="exerciseType" th:value="${selectedExercise.type}" th:if="${iterStat.index == 0}" required><br>
+
+
+                    <label th:text="'Muscle: ' + ${selectedExercise.muscle}" th:if="${iterStat.index == 0}"></label>
+                    <input type="hidden" name="targetMuscles" th:value="${selectedExercise.muscle}" th:if="${iterStat.index == 0}" required><br>
+
+
+                    <label th:text="'Notes: '" th:if="${iterStat.index == 0}"></label>
+                    <textarea name="exerciseNotes" rows="4" th:if="${iterStat.index == 0}" required></textarea>
+                </th:block>
+
+<!--                <th:block th:each="selectedExercise, iterStat : ${selectedExercises}">-->
+<!--                    <label th:text="'Name: ' + ${selectedExercise.name}" th:if="${iterStat.index == 1}"></label>-->
+<!--                    <input type="hidden" name="name" th:value="${selectedExercise.name}" th:if="${iterStat.index == 1}" required><br>-->
+
+
+<!--                    <label th:text="'Type: ' + ${selectedExercise.type}" th:if="${iterStat.index == 1}"></label>-->
+<!--                    <input type="hidden" name="exerciseType" th:value="${selectedExercise.type}" th:if="${iterStat.index == 1}" required><br>-->
+
+
+<!--                    <label th:text="'Muscle: ' + ${selectedExercise.muscle}" th:if="${iterStat.index == 1}"></label>-->
+<!--                    <input type="hidden" name="targetMuscles" th:value="${selectedExercise.muscle}" th:if="${iterStat.index == 1}" required><br>-->
+
+
+<!--                    <label th:text="'Notes (Optional): '" th:if="${iterStat.index == 1}"></label>-->
+<!--                    <textarea name="exerciseNotes" rows="4" th:if="${iterStat.index == 1}" required></textarea>-->
+<!--                </th:block>-->
+
+            </div>
+            <input type="submit" value="Save to Exercises">
+        </form>
+    </div>
+</div>
+<div class="search-exercise-button" style="text-align: center; margin-bottom: 280px;">
+    <a th:href="@{/search}" class="btn btn-primary">Search our database of exercises here!</a>
+</div>
+<div class="footer" th:replace="fragments :: footer"></div>
+
+</body>
+</html>
