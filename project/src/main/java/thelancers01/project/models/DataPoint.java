@@ -6,82 +6,105 @@ import java.util.Objects;
 
 @Entity
 public class DataPoint {
-
-
-
     @Id
-    @GeneratedValue
-    private int id;
-    private int nextId = 1;
-    private String date;
-    private String value;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private double mileTime;
+    private int benchPress;
+    private int squat;
+    private int maxPushUps;
+    private int maxSitUps;
+    private int caloriesBurned;
+
+
+   @ManyToOne
+   @JoinColumn(name = "user_id")
+   private User user;
+   public DataPoint() {}
+
+    // In DataPoint entity
     @ManyToOne
     @JoinColumn(name = "record_id")
     private Record record;
 
-    public Record getRecords() {
-        return record;
+    public DataPoint(double mileTime, int benchPress, int squat, int maxPushUps, int maxSitUps, int caloriesBurned) {
+        this.mileTime = mileTime;
+        this.benchPress = benchPress;
+        this.squat = squat;
+        this.maxPushUps = maxPushUps;
+        this.maxSitUps = maxSitUps;
+        this.caloriesBurned = caloriesBurned;
     }
 
-    public void setRecord(Record record) {
-        this.record = record;
-    }
-
-    public DataPoint(String date, String value, Record record) {
-        this.date = date;
-        this.value = value;
-        this.record = record;
-        this.id = nextId;
-        nextId++;
-    }
-
-    public DataPoint(String date, String value) {
-            this.date = date;
-            this.value = value;
-            this.id = nextId;
-            nextId++;
-        }
-        public DataPoint(Record record){
-        this.record = record;
-        }
-
-        public DataPoint(){}
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-    public String getDate() {
-            return date;
-        }
 
-        public void setDate(String date) {
-            this.date = date;
-        }
+    public double getMileTime() {return mileTime;}
 
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public void setMileTime(double mileTime) {
+        this.mileTime = mileTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DataPoint dataPoint = (DataPoint) o;
-        return id == dataPoint.id;
+    public int getBenchPress() {
+        return benchPress;
+    }
+
+    public void setBenchPress(int benchPress) {
+        this.benchPress = benchPress;
+    }
+
+    public int getSquat() {
+        return squat;
+    }
+
+    public void setSquat(int squat) {
+        this.squat = squat;
+    }
+
+    public int getMaxPushUps() {
+        return maxPushUps;
+    }
+
+    public void setMaxPushUps(int maxPushUps) {
+        this.maxPushUps = maxPushUps;
+    }
+
+    public int getMaxSitUps() {
+        return maxSitUps;
+    }
+
+    public void setMaxSitUps(int maxSitUps) {
+        this.maxSitUps = maxSitUps;
+    }
+
+    public int getCaloriesBurned() {
+        return caloriesBurned;
+    }
+
+    public void setCaloriesBurned(int caloriesBurned) {
+        this.caloriesBurned = caloriesBurned;
+    }
+
+    public void updateFields(DataPoint newData) {
+        this.mileTime = newData.getMileTime();
+        this.benchPress = newData.getBenchPress();
+        this.squat = newData.getSquat();
+        this.maxPushUps = newData.getMaxPushUps();
+        this.maxSitUps = newData.getMaxSitUps();
+        this.caloriesBurned = newData.getCaloriesBurned();
+    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

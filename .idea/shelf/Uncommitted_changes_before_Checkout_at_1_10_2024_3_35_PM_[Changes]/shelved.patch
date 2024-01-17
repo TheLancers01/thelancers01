@@ -1,0 +1,28 @@
+Index: project/src/main/java/thelancers01/project/models/DataPoint.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package thelancers01.project.models;\r\n\r\nimport jakarta.persistence.Entity;\r\nimport jakarta.persistence.GeneratedValue;\r\nimport jakarta.persistence.Id;\r\n\r\nimport java.util.Objects;\r\n\r\n@Entity\r\npublic class DataPoint {\r\n\r\n\r\n    @Id\r\n    @GeneratedValue\r\n    private int id;\r\n    private int nextId = 1;\r\n\r\n\r\n    private String date;\r\n        private int value;\r\n\r\n        public DataPoint(String date, int value) {\r\n            this.date = date;\r\n            this.value = value;\r\n            this.id = nextId;\r\n            nextId++;\r\n        }\r\n\r\n    public int getId() {\r\n        return id;\r\n    }\r\n\r\n\r\n    public String getDate() {\r\n            return date;\r\n        }\r\n\r\n        public void setDate(String date) {\r\n            this.date = date;\r\n        }\r\n\r\n        public int getValue() {\r\n            return value;\r\n        }\r\n\r\n        public void setValue(int value) {\r\n            this.value = value;\r\n        }\r\n\r\n\r\n    @Override\r\n    public int hashCode() {\r\n        return Objects.hash(id);\r\n    }\r\n\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        DataPoint dataPoint = (DataPoint) o;\r\n        return id == dataPoint.id;\r\n    }\r\n}\r\n\r\n\r\n\r\n
+===================================================================
+diff --git a/project/src/main/java/thelancers01/project/models/DataPoint.java b/project/src/main/java/thelancers01/project/models/DataPoint.java
+--- a/project/src/main/java/thelancers01/project/models/DataPoint.java	
++++ b/project/src/main/java/thelancers01/project/models/DataPoint.java	
+@@ -1,8 +1,6 @@
+ package thelancers01.project.models;
+ 
+-import jakarta.persistence.Entity;
+-import jakarta.persistence.GeneratedValue;
+-import jakarta.persistence.Id;
++import jakarta.persistence.*;
+ 
+ import java.util.Objects;
+ 
+@@ -15,6 +13,9 @@
+     private int id;
+     private int nextId = 1;
+ 
++    @ManyToOne
++    @JoinColumn(name = "record_id")
++    private Record record;
+ 
+     private String date;
+         private int value;

@@ -8,6 +8,7 @@
 <div class="top-bar">
     <h1>Lancer's Fitness</h1>
     <div class="account-actions">
+        <a th:href="@{/records/view}" class="btn btn-info">User Records</a>
         <a th:href="@{/userExercises}" class="btn btn-info">User Exercises</a>
         <a th:href="@{/dashboard}" class="btn btn-info">Dashboard</a>
         <a th:href="@{/account}" class="btn btn-info">Manage Account</a>
@@ -71,23 +72,23 @@
     <form th:action="@{/addToWorkout}" method="post" id="addToWorkoutForm">
 
 
-            <label for="selectedExerciseNames">Select Exercise:</label>
-            <select name="selectedExerciseNames" id="selectedExerciseNames">
-                <option th:each="apiExercise : ${apiExercises}" th:value="${apiExercise.name}" th:text="${apiExercise.name}"></option>
-            </select>
+        <label for="selectedExerciseNames">Select Exercise:</label>
+        <select name="selectedExerciseNames" id="selectedExerciseNames">
+            <option th:each="apiExercise : ${apiExercises}" th:value="${apiExercise.name}" th:text="${apiExercise.name}"></option>
+        </select>
 
 
 
 
 
         <!--        <ul style="list-style: none; padding: 0;">-->
-<!--            <li th:each="apiExercise : ${apiExercises}">-->
-<!--                <label>-->
-<!--                    <input type="checkbox" name="selectedExerciseNames" th:value="${apiExercise.name}"/>-->
-<!--                    <span th:text="${apiExercise.name}" style="color: black;"></span>-->
-<!--                </label>-->
-<!--            </li>-->
-<!--        </ul>-->
+        <!--            <li th:each="apiExercise : ${apiExercises}">-->
+        <!--                <label>-->
+        <!--                    <input type="checkbox" name="selectedExerciseNames" th:value="${apiExercise.name}"/>-->
+        <!--                    <span th:text="${apiExercise.name}" style="color: black;"></span>-->
+        <!--                </label>-->
+        <!--            </li>-->
+        <!--        </ul>-->
         <button type="submit">Add to Your Exercises</button>
     </form>
 </div>
