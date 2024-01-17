@@ -1,38 +1,46 @@
 package thelancers01.project.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-public class Exercise {
-
+public class Exercise{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     public static String name;
     private static int nextId = 1;
     private String exerciseName;
     private String exerciseType;
     private String targetMuscles;
     private String exerciseNotes;
+    @ManyToMany(mappedBy = "exercises")
+    private List<Workoutb> workoutbs = new ArrayList<>();
+    public List<Workoutb> getWorkoutbs() {return workoutbs;}
 
-    public Exercise(String exerciseName, String exerciseType, String targetMuscles, String exerciseNotes) {
+
+    public Exercise(String exerciseName, String exerciseType, String targetMuscles, String exerciseNotes, List<Workoutb> workoutbs) {
         this.exerciseName = exerciseName;
         this.exerciseType = exerciseType;
         this.targetMuscles = targetMuscles;
         this.exerciseNotes = exerciseNotes;
-        this.id = nextId;
+        this.workoutbs = workoutbs;
         nextId++;
     }
 
     public Exercise (){};
+
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return exerciseName;
@@ -66,16 +74,4 @@ public class Exercise {
         this.exerciseNotes = exerciseNotes;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Exercise exercise = (Exercise) o;
-        return id == exercise.id;
-    }
 }

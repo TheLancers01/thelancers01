@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+    <meta charset="UTF-8"/>
+    <title>Create New Exercise - Lancer's Fitness</title>
+</head>
+<body>
+<div th:replace="~{fragments :: top-bar}" class="top-bar">
+</div>
+<div>
+    <img src="/images/Ad.jpeg" alt="Advertisement Image" class="ad">
+</div>
+
+<div th:replace="~{fragments :: mini-guide}"></div>
+
+<div class="create-exercise-container">
+    <h2 class="create">Create New Data Point</h2>
+    <div class="form-container">
+        <form action="/records/createDataPoint" method="post">
+
+            <label for="date">Date</label>
+            <input type="text" id="date" name="date" th:field="${dataPoint.date}" required><br>
+
+            <label for="value">Value</label>
+            <input type="text" id="value" name="value" th:field="${dataPoint.value}" required><br>
+
+            <input type="hidden" id="recordId" name="recordId" th:value="${recordId}" required><br>
+
+<!--            <label th:for="initialDataPoint">New Data Point</label>-->
+<!--            <input type="text" th:field="${dataPoint.date}" required>Date<br>-->
+<!--            <input type="text" th:field="${dataPoint.value}" required>Value<br>-->
+<!--            <input hidden="" id="recordId" name="recordId" required><br>-->
+            <!--            <textarea id="date" name="date" rows="1" required></textarea><br>-->
+            <!--            <textarea id="value" name="value" rows="1" required></textarea><br>-->
+
+            <button type="submit" class="btn btn-submit">Submit</button>
+        </form>
+    </div>
+</div>
+<div  class="footer" th:replace="fragments :: footer"></div>
+</body>
+</html>
