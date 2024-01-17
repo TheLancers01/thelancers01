@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e643569c-f8bb-4d42-ac05-2271af7de2d4" name="Changes" comment="Selected exercises from search now populate the exercises list on /workouts/create" />
+    <list default="true" id="e643569c-f8bb-4d42-ac05-2271af7de2d4" name="Changes" comment="Selected exercises from search now populate the exercises list on /workouts/create">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/java/thelancers01/project/models/DataPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/java/thelancers01/project/models/DataPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/resources/static/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/resources/templates/exercise/createApiExercise.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/templates/exercise/createApiExercise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/main/resources/templates/exerciseList.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/main/resources/templates/exerciseList.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,12 +39,26 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "CoryWilk"
+  }
+}]]></component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
       <list>
         <option value="main" />
         <option value="development" />
       </list>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="4ee53925-41b6-4965-b00e-20ac63059bd9" />
+        <option name="url" value="https://github.com/TheLancers01/thelancers01.git" />
+      </UrlAndAccount>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -57,7 +77,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "deleteExercises",
+    "git-widget-placeholder": "personal-records-carl",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/stand/Desktop",
     "run.code.analysis.last.selected.profile": "pProject Default"
@@ -379,7 +399,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705296030699</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Selected exercises from search now populate the exercises list on /workouts/create">
+      <option name="closed" value="true" />
+      <created>1705504551573</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1705504551573</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

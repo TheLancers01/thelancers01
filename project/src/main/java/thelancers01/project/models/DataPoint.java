@@ -22,6 +22,11 @@ public class DataPoint {
    private User user;
    public DataPoint() {}
 
+    // In DataPoint entity
+    @ManyToOne
+    @JoinColumn(name = "record_id")
+    private Record record;
+
     public DataPoint(double mileTime, int benchPress, int squat, int maxPushUps, int maxSitUps, int caloriesBurned) {
         this.mileTime = mileTime;
         this.benchPress = benchPress;
