@@ -1,18 +1,18 @@
 package thelancers01.project.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 @Entity
 public class Exercise {
 
-
+@ManyToOne
+@JoinColumn(name = "user_id")
+private User user;
     @Id
     @GeneratedValue
     private int id;
-    public static String name;
+    public  String name;
     private static int nextId = 1;
     private String exerciseName;
     private String exerciseType;
@@ -33,14 +33,14 @@ public class Exercise {
         return id;
     }
 
+    public User getUser() {return user;}
 
-    public String getName() {
-        return exerciseName;
-    }
+    public void setUser(User user) {this.user = user;}
 
-    public void setName(String exerciseName) {
-        this.exerciseName = exerciseName;
-    }
+
+    public String getExerciseName() {return exerciseName;}
+
+    public void setExerciseName(String exerciseName) {this.exerciseName = exerciseName;}
 
     public String getExerciseType() {
         return exerciseType;

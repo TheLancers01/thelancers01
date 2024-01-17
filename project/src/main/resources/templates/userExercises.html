@@ -25,10 +25,11 @@
     <div th:each="exercise : ${exercises}">
         <div class="exercise-row">
             <div class="exercise-details">
-                <strong>Name:</strong> <span th:text="${exercise.getName}"></span><br>
-                <strong>Type:</strong> <span th:text="${exercise.getExerciseType}"></span><br>
-                <strong>Target Muscles:</strong> <span th:text="${exercise.getTargetMuscles}"></span><br>
-                <strong>Notes:</strong> <span th:text="${exercise.getExerciseNotes}"></span>
+                <strong>Name:</strong> <span th:text="${exercise.exerciseName}"></span><br>
+                <strong>Type:</strong> <span th:text="${exercise.exerciseType}"></span><br>
+                <strong>Target Muscles:</strong> <span th:text="${exercise.targetMuscles}"></span><br>
+                <strong>Notes:</strong> <span th:text="${exercise.exerciseNotes}"></span>
+
             </div>
             <input type="checkbox" th:value="${exercise.id}" name="selectedExercises" class="exercise-checkbox" />
         </div>

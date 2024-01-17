@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface RecordsRepository extends CrudRepository<DataPoint, Integer> {
 
-    Optional<DataPoint> findFirstByUserOrderByIdDesc(User user);
+    List<DataPoint> findByUser(User user);
 }

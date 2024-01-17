@@ -8,16 +8,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import thelancers01.project.models.DataPoint;
+import thelancers01.project.models.Exercise;
 import thelancers01.project.models.User;
 import thelancers01.project.models.data.UserRepository;
+import thelancers01.project.models.data.RecordsRepository;
+import thelancers01.project.models.data.ExerciseRepository;
 import thelancers01.project.models.dto.ChangePasswordFormDTO;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AccountController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RecordsRepository recordsRepository;
 
+    @Autowired
+    private ExerciseRepository exerciseRepository;
 
     @GetMapping("/account")
     public String viewAccount(Model model, HttpSession session) {
@@ -53,6 +64,10 @@ public class AccountController {
     public String deleteAccount(HttpSession session) {
         User user = getUserFromSession(session);
         if (user != null) {
+            List<Exercise> exercises = exerciseRepository.findByUser(user);
+            exerciseRepository.deleteAll(exercises);
+            List<DataPoint> dataPoints = recordsRepository.findByUser(user);
+            recordsRepository.deleteAll(dataPoints);
             userRepository.delete(user);
             session.invalidate();
         }
@@ -60,7 +75,7 @@ public class AccountController {
     }
 
     private User getUserFromSession(HttpSession session) {
-        Integer userId = (Integer) session.getAttribute("user");
+        Integer userId = (Integer) session.getAttribute("userId");
         if (userId == null) {
             return null;
         }

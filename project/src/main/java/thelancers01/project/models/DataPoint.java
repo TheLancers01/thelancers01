@@ -19,6 +19,7 @@ public class DataPoint {
 
 
    @ManyToOne
+   @JoinColumn(name = "user_id")
    private User user;
    public DataPoint() {}
 
