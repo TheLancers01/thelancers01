@@ -7,6 +7,9 @@
 <body>
 <div class="top-bar">
     <h1>Lancer's Fitness</h1>
+    <div class="account-actions">
+        <a th:href="@{/homepage}" class="btn btn-info">Home</a>
+    </div>
 </div>
 <div class="content-wrap">
     <div class="login-form-container">
@@ -24,6 +27,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
+        <div class="register-link">
+            <p>No account created yet? <a th:href="@{/register}" class="btn btn-link">Register here</a></p>
+        </div>
     </div>
 </div>
 <div class="footer" th:replace="~{fragments :: footer}"></div>

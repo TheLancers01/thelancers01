@@ -7,6 +7,9 @@
 <body>
 <div class="top-bar">
     <h1>Lancer's Fitness</h1>
+    <div class="account-actions">
+        <a th:href="@{/homepage}" class="btn btn-info">Home</a>
+    </div>
 </div>
 <div class="content-wrap">
     <div class="registration-form-container">
@@ -33,6 +36,9 @@
                 <p class="error" th:if="${#fields.hasErrors('verifyPassword')}" th:errors="*{verifyPassword}"></p>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
+            <div class="log-in-link">
+                <p>Already have an account? <a th:href="@{/login}" class="btn btn-link">Login here</a></p>
+            </div>
         </form>
     </div>
 </div>

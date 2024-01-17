@@ -22,7 +22,7 @@
     <div class="form-container">
         <form action="/exercise/create" method="post" class="centered-form">
             <label th:for="exerciseName">Name</label>
-            <input type="text" th:field="${exercise.name}" required><br>
+            <input id="exerciseName" name="exerciseName" required><br>
 
             <label th:for="exerciseType">Type</label>
             <select id="exerciseType" name="exerciseType" required>
