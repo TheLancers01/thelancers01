@@ -43,7 +43,6 @@ color: black;
     align-items: center;
     padding: 10px;
     background-color: #c06000 ;
-    width: 100%;
 }
 .top-bar h1 {
     font-family:  Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;
@@ -198,6 +197,7 @@ label {
     background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 720px;
 }
 
 .confirmation-container h1 {
@@ -246,6 +246,16 @@ label {
 
 }
 
+
+.No-Exercise-Found{
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-weight: bold
+
+}
+
+
 .exercise-details-box img {
     display: block;
     margin: auto;
@@ -261,13 +271,14 @@ label {
 }
 
 .create-exercise-container{
-    margin-right: 400px;
-    margin-top: -200px;
+    margin-top: 30px;
+
 }
+
 .create-exercise-button{
-    margin-bottom: 190px;
+    margin-bottom: 320px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 200px;
     }
 }
 .User-Exercises-Detail{
@@ -306,7 +317,7 @@ label {
 
 .exercise-details {
     flex-grow: 1;
-    margin-left: 200px;
+    margin-left: 10px;
 }
 
 .exercise-checkbox {
@@ -315,6 +326,46 @@ label {
     top: 50%;
     transform: translateY(-50%) scale(1.5);
     }
+
+.btn-small {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+}
+.main-title-records {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.records-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.records-table th, .records-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.records-table th {
+    background-color: #f2f2f2;
+}
+
+.records-table form {
+    display: flex;
+    align-items: center;
+}
+
+.records-table input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.btn-submit:hover {
+    background-color: #1b7a1f;
+}
 
  table {
         border-collapse: collapse;

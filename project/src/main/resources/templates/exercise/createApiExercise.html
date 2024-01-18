@@ -34,7 +34,7 @@
                     <input type="hidden" name="targetMuscles" th:value="${selectedExercise.muscle}" th:if="${iterStat.index == 0}" required><br>
 
 
-                    <label th:text="'Notes (Optional): '" th:if="${iterStat.index == 0}"></label>
+                    <label th:text="'Notes: '" th:if="${iterStat.index == 0}"></label>
                     <textarea name="exerciseNotes" rows="4" th:if="${iterStat.index == 0}" required></textarea>
                 </th:block>
 

@@ -23,6 +23,11 @@ public class Exercise{
     public List<Workoutb> getWorkoutbs() {return workoutbs;}
 
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
     public Exercise(String exerciseName, String exerciseType, String targetMuscles, String exerciseNotes, List<Workoutb> workoutbs) {
         this.exerciseName = exerciseName;
         this.exerciseType = exerciseType;
