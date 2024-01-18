@@ -13,7 +13,7 @@ public class Exercise{
     private int id;
 
     public static String name;
-    private static int nextId = 1;
+    private int nextId = 1;
     private String exerciseName;
     private String exerciseType;
     private String targetMuscles;
@@ -28,13 +28,13 @@ public class Exercise{
     private User user;
 
 
-    public Exercise(String exerciseName, String exerciseType, String targetMuscles, String exerciseNotes, List<Workoutb> workoutbs) {
+    public Exercise(String exerciseName, String exerciseType, String targetMuscles, String exerciseNotes) {
         this.exerciseName = exerciseName;
         this.exerciseType = exerciseType;
         this.targetMuscles = targetMuscles;
         this.exerciseNotes = exerciseNotes;
         this.workoutbs = workoutbs;
-        nextId++;
+        this.id = nextId++;
     }
 
     public Exercise (){};

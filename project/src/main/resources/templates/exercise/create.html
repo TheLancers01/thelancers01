@@ -20,9 +20,9 @@
     <h2 class="center-text">Create New Exercise</h2>
 
     <div class="form-container">
-        <form action="/exercise/create" method="post" class="centered-form">
+        <form action="/exercise/create" method="post" class="centered-form" th:object="${exercise}">
             <label th:for="exerciseName">Name</label>
-            <input id="exerciseName" name="exerciseName" required><br>
+            <input id="exerciseName" name="exerciseName" th:field="*{name}" required><br>
 
             <label th:for="exerciseType">Type</label>
             <select id="exerciseType" name="exerciseType" required>

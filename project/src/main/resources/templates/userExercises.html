@@ -24,7 +24,7 @@
             <div class="exercise-details">
                 <ul class="no-bullets">
                     <li class="BigNBold">
-                        <a th:href="@{'/exercise/view/' + ${exercise.id}}" class="exercise-entry" th:text="${exercise.getName}"></a>
+                        <a th:href="@{'/exercise/view/' + ${exercise.id}}" class="exercise-entry" th:text="${exercise.getName()}"></a>
                     </li>
                 </ul>
                 <br>
